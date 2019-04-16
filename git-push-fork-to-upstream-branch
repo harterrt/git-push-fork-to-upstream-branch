@@ -20,9 +20,9 @@ REPO_NAME=$(git remote get-url --push origin | awk -F/ '{print $NF}')
 
 git remote remove fork-to-test || echo "Added new remote fork-to-test"
 if [ -n "$GPF_USE_SSH" ]; then
-    git remote add fork-to-test git@github.com:$SOURCE_GH_USER/$REPO_NAME.git
+    git remote add fork-to-test git@github.com:$SOURCE_GH_USER/$REPO_NAME
 else
-    git remote add fork-to-test https://github.com/$SOURCE_GH_USER/$REPO_NAME.git
+    git remote add fork-to-test https://github.com/$SOURCE_GH_USER/$REPO_NAME
 fi
 git fetch --all
 git push --force $UPSTREAM_REPO "refs/remotes/fork-to-test/$SOURCE_BRANCH:refs/heads/$GPF_UPSTREAM_BRANCH"
